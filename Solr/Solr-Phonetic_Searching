@@ -1,0 +1,23 @@
+<fieldType name="phonetics" class="solr.TextField" positionIncrementGap="100" multiValued="true">
+    <analyzer type="index">         
+        <filter class="solr.TrimFilterFactory"/>        
+        <filter class="solr.NGramFilterFactory" minGramSize="2" maxGramSize="1000" />
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="1000"  />
+        <filter class="solr.WordDelimiterFilterFactory" splitOnCaseChange="1" splitOnNumerics="0" 
+        generateWordParts="1" stemEnglishPossessive="0" generateNumberParts="0"
+        catenateWords="1" catenateNumbers="0" catenateAll="0" preserveOriginal="1"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <tokenizer class="solr.WhitespaceTokenizerFactory"/>        
+        <filter class="solr.DoubleMetaphoneFilterFactory" inject="true"/>
+        <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+    </analyzer>
+    <analyzer type="query">     
+        <filter class="solr.TrimFilterFactory"/>        
+        <filter class="solr.WordDelimiterFilterFactory" splitOnCaseChange="1" splitOnNumerics="0" 
+        generateWordParts="1" stemEnglishPossessive="0" generateNumberParts="0"
+        catenateWords="1" catenateNumbers="0" catenateAll="0" preserveOriginal="1"/>        
+        <tokenizer class="solr.WhitespaceTokenizerFactory"/>        
+        <filter class="solr.LowerCaseFilterFactory"/>       
+        <filter class="solr.DoubleMetaphoneFilterFactory" inject="true"/>
+    </analyzer>
+</fieldType>

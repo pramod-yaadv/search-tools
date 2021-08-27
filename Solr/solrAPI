@@ -1,0 +1,7 @@
+/product2/admin/ping => Health check.
+/product2/admin/properties => JRE Props
+/product2/admin/file => To get the info of All Config File Name & Date
+/product2/schema?wt=xml
+/solr/admin/info/logging
+
+https://lucene.apache.org/solr/guide/8_0/implicit-requesthandlers.html

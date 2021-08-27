@@ -1,0 +1,33 @@
+1. Backend Screen in Support / Indexing Page to Configure Solr Search Configuration [Use of Integration API Base]
+
+facet.pivot
+d. Solr default Sort
+e. Solr default query Parser (defType) [disMax, edisMax]
+f. Solr default suggestion boost
+g. Solr Default Query Field (qf)
+h. Solr Default Field/Search Field (df)
+i. Solr Default Boost functions (bf)  [boost query is a query that will be executed on background after a user query]
+j. Solr Default Boost Queries (bq)
+boost
+k. Solr Default Raw Query Parameters [Separated by &]
+l. No of Records in One Page
+
+In Frontend All this Settings Store in Java Cache and updated at some interval
+
+4. Use docValues="true" for Facet Fields
+5. Simplify specs Field to have only important Field using Delimiter "%%"
+
+
+1. Web & Mobile request interceptor to Fetch & prepare all the filters[Fixed & Dynamic], keyword, sort from GET & POST parameters and similarly do for Mobile API
+- Prepare the keyword, Filters, Start & row.
+
+2. Call One Util Function to perform Faceted Listing Search based on Filters & sort (performFacetedListSearch()) 
+- Parameters : keyword, Filters, start, row, sort
+- Return: QueryResponse 
+- Internally it fetch out default Select Field, Default search Field, Facet Fields, queryParser, qf,bf, bq, default sort(If no explicit Sort), statsField, facetQuery
+
+3. Query Response will be cache in request
+
+4. Primary Filters and Sort should store in hidden Field of Page and On every Sub Filter, all will pass by default.
+5. Perform Solr Index in Multiple Thread of Batches
+
